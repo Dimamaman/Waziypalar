@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="uz.gita.dima.waziypalar.presenter.viewmodel.TaskViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/taskFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".view.activity.MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/layoutTaskBar"
+                layout="@layout/layout_task_app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                app:data="@{viewmodel}" />
+
+            <include
+                android:id="@+id/layoutLoadingTask"
+                layout="@layout/layout_loading_task"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadingState="@{viewmodel.loadingState}" />
+
+            <include
+                android:id="@+id/layoutTaskHolder"
+                layout="@layout/layout_main_task_holder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:data="@{viewmodel}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutTaskBar" />
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btnCreateTask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/padding_16dp"
+            android:backgroundTint="@color/dribblePink"
+            android:fontFamily="@font/calibre_semi"
+            android:minHeight="@dimen/padding_10dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_16sp"
+            app:icon="@drawable/ic_add"
+            app:iconPadding="@dimen/padding_8dp"
+            app:iconSize="@dimen/padding_16dp"
+            app:iconTint="@color/white"
+            app:show="@{(viewmodel.taskListSize==0 &amp;&amp; viewmodel.assignedTaskList.size()==0 ) ? false: true}" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="signup_create_acc_txt">Create account for <font color="#E94D88"><b>thinking Ahead</b></font></string>
     <string name="login_create_acc_txt">Have account? <font color="#E94D88"><b>Get in</b></font></string>
     <string name="think">think.</string>
@@ -38,7 +38,7 @@
     <string name="overdue">Overdue</string>
 
     <!--Revised Strings-->
-    <string name="app_name">Waziypalar</string>
+    <string name="app_name">Ahead</string>
     <string name="fragment_task_general_app_desc">Start managing your tasks</string>
 
     <!--Authentication-->
@@ -93,5 +93,5 @@
     <string name="priority_header">Priority</string>
     <string name="attachment">Attachment</string>
     <string name="title_activity_feedback">FeedbackActivity</string>
-    <string name="client_id">AIzaSyClZBEmmPTbz0l4CHRq09sorg2g1j9mJg0</string>
+
 </resources>

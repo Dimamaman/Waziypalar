@@ -3,10 +3,11 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 
     id 'kotlin-kapt'
-    id 'kotlin-parcelize'
-    id 'androidx.navigation.safeargs.kotlin'
-    id 'com.google.dagger.hilt.android'
+    id 'dagger.hilt.android.plugin'
     id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.secrets_gradle_plugin' version '0.6'
 }
 
 android {
@@ -39,6 +40,7 @@ android {
 
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
 }
 
@@ -54,62 +56,84 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+
+    // CanaryLeak
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
+
+    // AppsFlyer
+    implementation 'com.appsflyer:af-android-sdk:6.2.3'
+    implementation 'com.android.installreferrer:installreferrer:2.2'
+
+    // Material Library
+    implementation 'com.google.android.material:material:1.7.0'
+
+    // Room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    // ViewPager2
+    implementation "androidx.viewpager2:viewpager2:$viewpager_version"
+
+    // Work Manager
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+    // Hilt for Work Manager
+    implementation "androidx.hilt:hilt-work:$hilt_work_version"
+    kapt "androidx.hilt:hilt-compiler:$hilt_work_version"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
+
+    // Lifecycle Components
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_java8_version"
+    // noinspection LifecycleAnnotationProcessorWithJava8
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_java8_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_java8_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_java8_version"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutine_play_version"
+
     // Firebase
-    // Import the BoM for the Firebase platform
-    implementation platform('com.google.firebase:firebase-bom:32.1.1')
+    implementation platform("com.google.firebase:firebase-bom:$firebase_bom_version")
+    implementation 'com.firebaseui:firebase-ui-auth:7.2.0' // not included in bom version
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.android.gms:play-services-auth:20.4.1' // not included in bom version
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+    implementation 'com.google.firebase:firebase-storage-ktx'
+    implementation 'com.google.firebase:firebase-messaging-ktx'
 
-    // Add the dependency for the Realtime Database library
-    // When using the BoM, you don't specify versions in Firebase library dependencies
-    implementation 'com.google.firebase:firebase-database-ktx'
-
-
-    // view binding
-    implementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.9'
-
-    def voyagerVersion = "1.0.0-rc06"
-
-    // Navigator
-    implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
-
-    // Android ViewModel integration
-    implementation("cafe.adriel.voyager:voyager-androidx:$voyagerVersion")
-
-    // Hilt integration
-    implementation("cafe.adriel.voyager:voyager-hilt:$voyagerVersion")
-
-    // LiveData integration
-    implementation("cafe.adriel.voyager:voyager-livedata:$voyagerVersion")
-
-    def work_version = "2.8.1"
-    def nav_version = "2.5.1"
-
-    // Kotlin + coroutines
-    implementation("androidx.work:work-runtime-ktx:$work_version")
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-
-    //livedata
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$nav_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$nav_version"
-
-    //navigation
+    // Navigation Component
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-    implementation"androidx.navigation:navigation-common:2.5.1"
 
-    //coroutine
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4"
+    // DI - Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
-    //fragment ktx
-    implementation 'androidx.fragment:fragment-ktx:1.6.0'
+    /*UI Libraries*/
 
-    // hilt
-    implementation "com.google.dagger:hilt-android:2.44.2"
-    kapt "com.google.dagger:hilt-compiler:2.44.2"
-    implementation "androidx.hilt:hilt-navigation-fragment:1.0.0"
+    // Lottie Animation
+    implementation "com.airbnb.android:lottie:$lottie_version"
+
+    // Shimmer effect
+    implementation "com.facebook.shimmer:shimmer:$shimmer_version"
 
     // GLIDE - Image Loader
-    implementation "com.github.bumptech.glide:glide:4.13.2"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+
+//    // Image Picker
+//    implementation "com.github.dhaval2404:imagepicker:$picker_version"
 
 
 }

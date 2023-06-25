@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <action
+        android:id="@+id/action_global_taskFragment"
+        app:destination="@id/taskFragment"
+        app:launchSingleTop="true" />
+
+    <action
+        android:id="@+id/action_global_taskEditFragment"
+        app:destination="@id/taskEditFragment"
+        app:launchSingleTop="true" />
+
+    <fragment
+        android:id="@+id/taskFragment"
+        android:name="tech.androidplay.sonali.todo.view.fragment.TaskFragment"
+        android:label="TaskFragment"
+        tools:layout="@layout/fragment_task">
+        <action
+            android:id="@+id/action_taskFragment_to_taskEditFragment"
+            app:destination="@id/taskEditFragment"
+            app:enterAnim="@anim/fade_out_animation"
+            app:exitAnim="@anim/fade_in_animation"
+            app:popEnterAnim="@anim/fade_out_animation"
+            app:popExitAnim="@anim/fade_in_animation" />
+        <action
+            android:id="@+id/action_taskFragment_to_taskCreateFragment"
+            app:destination="@id/taskCreateFragment"
+            app:enterAnim="@anim/fade_out_animation"
+            app:exitAnim="@anim/fade_in_animation"
+            app:popEnterAnim="@anim/fade_out_animation"
+            app:popExitAnim="@anim/fade_in_animation" />
+
+        <action
+            android:id="@+id/action_taskFragment_to_taskViewFragment"
+            app:destination="@id/taskViewFragment"
+            app:enterAnim="@anim/fade_out_animation"
+            app:exitAnim="@anim/fade_in_animation"
+            app:popEnterAnim="@anim/fade_out_animation"
+            app:popExitAnim="@anim/fade_in_animation"/>
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="uz.gita.dima.waziypalar.presenter.fragment.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_taskFragment"
+            app:destination="@id/taskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskEditFragment"
+        android:name="uz.gita.dima.waziypalar.presenter.fragment.TaskEditFragment"
+        android:label="TaskEditFragment"
+        tools:layout="@layout/fragment_task_edit">
+        <action
+            android:id="@+id/action_taskEditFragment_to_taskFragment"
+            app:destination="@id/taskFragment"
+            app:enterAnim="@anim/fade_out_animation"
+            app:exitAnim="@anim/fade_in_animation"
+            app:popEnterAnim="@anim/fade_out_animation"
+            app:popExitAnim="@anim/fade_in_animation"
+            app:popUpTo="@id/taskFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="taskId"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_taskEditFragment_to_prioritySelectionDialog"
+            app:destination="@id/prioritySelectionDialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskCreateFragment"
+        android:name="uz.gita.dima.waziypalar.presenter.fragment.TaskCreateFragment"
+        android:label="TaskCreateFragment"
+        tools:layout="@layout/fragment_task_create">
+        <action
+            android:id="@+id/action_taskCreateFragment_to_taskFragment"
+            app:destination="@id/taskFragment"
+            app:enterAnim="@anim/fade_out_animation"
+            app:exitAnim="@anim/fade_in_animation"
+            app:popEnterAnim="@anim/fade_out_animation" />
+        <action
+            android:id="@+id/action_taskCreateFragment_to_prioritySelectionDialog"
+            app:destination="@id/prioritySelectionDialog" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/prioritySelectionDialog"
+        android:name="uz.gita.dima.waziypalar.presenter.dialog.PrioritySelectionDialog"
+        android:label="PrioritySelectionDialog"
+        tools:layout="@layout/layout_priority_selection_dialog">
+        <argument
+            android:name="priorityId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </dialog>
+    <fragment
+        android:id="@+id/taskViewFragment"
+        android:name="uz.gita.dima.waziypalar.presenter.fragment.TaskViewFragment"
+        android:label="TaskViewFragment"
+        tools:layout="@layout/fragment_task_view">
+        <action
+            android:id="@+id/action_taskViewFragment_to_prioritySelectionDialog"
+            app:destination="@id/prioritySelectionDialog" />
+        <action
+            android:id="@+id/action_taskViewFragment_to_taskFragment"
+            app:destination="@id/taskFragment"
+            app:enterAnim="@anim/fade_out_animation"
+            app:exitAnim="@anim/fade_in_animation"
+            app:popEnterAnim="@anim/fade_out_animation"
+            app:popExitAnim="@anim/fade_in_animation"/>
+        <argument android:name="taskId"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+</navigation>

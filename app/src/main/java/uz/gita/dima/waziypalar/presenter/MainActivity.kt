@@ -1,30 +1,100 @@
 package uz.gita.dima.waziypalar.presenter
 
-import androidx.appcompat.app.AppCompatActivity
+import android.annotation.SuppressLint
+import android.content.ComponentName
+import android.content.Intent
+import android.content.pm.ActivityInfo
+import android.content.pm.PackageManager
 import android.os.Bundle
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import com.appsflyer.AppsFlyerLib
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import uz.gita.dima.waziypalar.R
-import uz.gita.dima.waziypalar.navigation.NavigationHandler
+import uz.gita.dima.waziypalar.databinding.ActivityMainBinding
+import uz.gita.dima.waziypalar.receiver.AlarmReceiver
+import uz.gita.dima.waziypalar.utils.Constants.ACTION_SHOW_TASK_FRAGMENT
+import uz.gita.dima.waziypalar.utils.Constants.ANDROID_OREO
+import uz.gita.dima.waziypalar.utils.Constants.DEVICE_ANDROID_VERSION
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class MainActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var navigationHandler: NavigationHandler
+    lateinit var appsFlyerLib: AppsFlyerLib
+    private lateinit var binding: ActivityMainBinding
+
+    @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val fragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        appsFlyerLib.start(this)
 
-        navigationHandler.navigationStack
-            .onEach {
-                it.invoke(fragment.findNavController())
-            }.launchIn(lifecycleScope)
+        managePendingAlarm()
+
+        navigateToGlobalFragment(intent)
+        setScreenUI()
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        intent?.let {
+            navigateToGlobalFragment(it)
+        }
+    }
+
+
+
+    // TODO: Find work around
+    @SuppressLint("ResourceAsColor", "SourceLockedOrientationActivity")
+    private fun setScreenUI() {
+        // To support portrait view in API 26
+        if (DEVICE_ANDROID_VERSION != ANDROID_OREO) {
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        }
+    }
+
+
+    // Enables the AlarmReceiver
+    @OptIn(ExperimentalCoroutinesApi::class)
+    private fun managePendingAlarm() {
+        val receiver = ComponentName(applicationContext, AlarmReceiver::class.java)
+
+        applicationContext.packageManager?.setComponentEnabledSetting(
+            receiver,
+            PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+            PackageManager.DONT_KILL_APP
+        )
+    }
+
+
+    private fun navigateToGlobalFragment(intent: Intent) {
+        if (intent.action == ACTION_SHOW_TASK_FRAGMENT)
+            findNavController(R.id.navHostFragment).navigate(R.id.action_global_taskFragment)
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+/*        if (resultCode == RESULT_OK && data != null) {
+            authManager.handleAuth(requestCode, resultCode, data) { isSuccessful, error ->
+                if (isSuccessful) {
+                    val userDetails = authManager.userDetails
+                    userDetails?.let {
+                        viewModel.saveUserData(it)
+                    }
+                    findNavController(R.id.navHostFragment).navigate(R.id.action_global_taskFragment)
+                } else showSnack(
+                    findViewById(R.id.activityMain), getString(
+                        R.string.prompt_failed_to_login,
+                        error?.localizedMessage ?: "Unknown Error"
+                    )
+                )
+            }
+        }*/
     }
 }

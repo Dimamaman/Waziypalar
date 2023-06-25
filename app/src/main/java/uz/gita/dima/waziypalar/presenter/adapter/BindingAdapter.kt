@@ -5,7 +5,6 @@ import android.os.Build
 import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatButton
@@ -13,18 +12,16 @@ import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import uz.gita.dima.waziypalar.R
-import uz.gita.dima.waziypalar.util.*
-import uz.gita.dima.waziypalar.util.Constants.IS_AFTER
-import uz.gita.dima.waziypalar.util.Constants.IS_BEFORE
-import uz.gita.dima.waziypalar.util.Constants.LOW_PRIORITY
-import uz.gita.dima.waziypalar.util.Constants.MEDIUM_PRIORITY
-import uz.gita.dima.waziypalar.util.Constants.TOP_PRIORITY
-import uz.gita.dima.waziypalar.util.UIHelper.loadImage
-import uz.gita.dima.waziypalar.util.UIHelper.removeStrikeThroughText
-import uz.gita.dima.waziypalar.util.UIHelper.setTint
-import uz.gita.dima.waziypalar.util.UIHelper.showSnack
-import uz.gita.dima.waziypalar.util.UIHelper.showToast
-import uz.gita.dima.waziypalar.util.UIHelper.strikeThroughText
+import uz.gita.dima.waziypalar.utils.Constants.IS_AFTER
+import uz.gita.dima.waziypalar.utils.Constants.IS_BEFORE
+import uz.gita.dima.waziypalar.utils.Constants.LOW_PRIORITY
+import uz.gita.dima.waziypalar.utils.Constants.MEDIUM_PRIORITY
+import uz.gita.dima.waziypalar.utils.Constants.TOP_PRIORITY
+import uz.gita.dima.waziypalar.utils.UIHelper.removeStrikeThroughText
+import uz.gita.dima.waziypalar.utils.UIHelper.showSnack
+import uz.gita.dima.waziypalar.utils.UIHelper.showToast
+import uz.gita.dima.waziypalar.utils.UIHelper.strikeThroughText
+import uz.gita.dima.waziypalar.utils.*
 
 
 /**
@@ -49,7 +46,6 @@ fun View.visibility(status: Boolean) {
 }
 
 
-@RequiresApi(Build.VERSION_CODES.O)
 @BindingAdapter("day_name")
 fun TextView.showDayName(date: String?) {
     this.text = if (date.isNullOrEmpty()) "" else date.toLong().convertFromEpochTime()
@@ -130,7 +126,7 @@ fun TextView.isNoImageTextVisible(url: String?) {
 }
 
 
-@BindingAdapter("showImage")
+/*@BindingAdapter("showImage")
 fun ImageView.showImage(url: String?) {
     if (url?.isNotEmpty() == true) {
         this.apply {
@@ -138,14 +134,14 @@ fun ImageView.showImage(url: String?) {
             visibility = View.VISIBLE
         }
     } else this.visibility = View.GONE
-}
+}*/
 
 
-@BindingAdapter("makeTint")
+/*@BindingAdapter("makeTint")
 fun ImageView.makeTint(url: String?) {
     if (url?.isNotEmpty() == true) this.setTint(R.color.white)
     else this.setTint(R.color.dribblePink)
-}
+}*/
 
 
 @SuppressLint("SetTextI18n")

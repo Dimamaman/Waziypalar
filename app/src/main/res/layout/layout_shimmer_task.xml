@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="false"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        tools:ignore="UselessParent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvCarouselShimmer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/padding_150dp"
+            android:layout_marginStart="@dimen/padding_16dp"
+            android:layout_marginTop="@dimen/padding_35dp"
+            android:layout_marginEnd="@dimen/padding_16dp"
+            app:cardBackgroundColor="@color/shimmerColor"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvTodoListItemShimmer"
+            android:layout_width="@dimen/padding_150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_16dp"
+            android:layout_marginTop="@dimen/padding_26dp"
+            android:layout_marginEnd="@dimen/padding_16dp"
+            android:background="@color/shimmerColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cvCarouselShimmer" />
+
+        <TextView
+            android:id="@+id/tvTodoItemOneShimmer"
+            android:layout_width="@dimen/padding_150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_16dp"
+            android:layout_marginTop="@dimen/padding_26dp"
+            android:layout_marginEnd="@dimen/padding_16dp"
+            android:background="@color/shimmerColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTodoListItemShimmer" />
+
+        <TextView
+            android:id="@+id/tvTodoItemTwoShimmer"
+            android:layout_width="@dimen/padding_150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_16dp"
+            android:layout_marginTop="@dimen/padding_26dp"
+            android:layout_marginEnd="@dimen/padding_16dp"
+            android:background="@color/shimmerColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTodoItemOneShimmer" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

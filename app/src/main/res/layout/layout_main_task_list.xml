@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="uz.gita.dima.waziypalar.presenter.viewmodel.TaskViewModel" />
+
+        <variable
+            name="todo"
+            type="uz.gita.dima.waziypalar.data.model.Todo" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/clItemListContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_10dp"
+        app:cardBackgroundColor="@color/bg_off_white"
+        app:cardCornerRadius="@dimen/padding_5dp"
+        app:cardElevation="@dimen/padding_0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/padding_10dp"
+            tools:ignore="RtlSymmetry,UselessParent">
+
+            <TextView
+                android:id="@+id/tvTodoDayName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibre"
+                android:textColor="@color/grey2"
+                android:textSize="@dimen/text_12sp"
+                app:day_name="@{todo.todoDate}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTodoListItem"
+                android:layout_width="@dimen/padding_0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/calibre_semi"
+                android:lines="1"
+                android:maxLines="2"
+                android:text="@{todo.todoBody}"
+                android:textColor="@color/grey3"
+                android:textSize="@dimen/text_18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTodoDayName"
+                app:strike_text="@{todo.isCompleted}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

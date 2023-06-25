@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="uz.gita.dima.waziypalar.presenter.viewmodel.TaskCreateViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clCreateTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_20dp"
+                android:clipChildren="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RelativeLayout
+                    android:id="@+id/layoutCreateTaskToolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imgBack"
+                        android:layout_width="@dimen/padding_26dp"
+                        android:layout_height="@dimen/padding_26dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_margin="@dimen/padding_16dp"
+                        android:background="@drawable/bg_icon_ripple"
+                        android:src="@drawable/ic_back"
+                        tools:ignore="ContentDescription" />
+
+                </RelativeLayout>
+
+                <include
+                    android:id="@+id/layoutTaskInput"
+                    layout="@layout/layout_task_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_18dp"
+                    android:layout_marginEnd="@dimen/padding_18dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutCreateTaskToolbar"
+                    app:task="@{viewmodel.todo}" />
+
+                <include
+                    android:id="@+id/layoutSetAlarm"
+                    layout="@layout/layout_set_alarm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/padding_16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutTaskInput" />
+
+
+                <TextView
+                    android:id="@+id/tvAttachmentHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_16dp"
+                    android:layout_marginTop="@dimen/padding_26dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/calibre_semi"
+                    android:text="@string/options"
+                    android:textColor="@color/grey3"
+                    android:textSize="@dimen/text_18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutSetAlarm" />
+
+                <include
+                    android:id="@+id/layoutCreateTaskFeatures"
+                    layout="@layout/layout_create_task_features"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_18dp"
+                    android:layout_marginTop="@dimen/padding_16dp"
+                    android:layout_marginEnd="@dimen/padding_18dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAttachmentHeader" />
+
+                <include
+                    android:id="@+id/layoutTaskImage"
+                    layout="@layout/layout_image_holder"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/padding_16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutCreateTaskFeatures" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnCreateTask"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="@dimen/padding_16dp"
+                android:background="@drawable/bg_rounded_6dp"
+                android:backgroundTint="@color/dribblePink"
+                android:fontFamily="@font/calibre_semi"
+                android:onClick="@{() -> viewmodel.createTask(viewmodel.todo)}"
+                android:stateListAnimator="@animator/button_state_animator"
+                android:text="@string/create_task"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_18sp" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </ScrollView>
+
+</layout>
+
