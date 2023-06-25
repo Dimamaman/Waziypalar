@@ -1,0 +1,115 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.dagger.hilt.android'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    namespace 'uz.gita.dima.waziypalar'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "uz.gita.dima.waziypalar"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.databinding:databinding-common:8.0.1'
+    implementation 'com.google.android.gms:play-services-cast-framework:21.3.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // Firebase
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:32.1.1')
+
+    // Add the dependency for the Realtime Database library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-database-ktx'
+
+
+    // view binding
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.9'
+
+    def voyagerVersion = "1.0.0-rc06"
+
+    // Navigator
+    implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
+
+    // Android ViewModel integration
+    implementation("cafe.adriel.voyager:voyager-androidx:$voyagerVersion")
+
+    // Hilt integration
+    implementation("cafe.adriel.voyager:voyager-hilt:$voyagerVersion")
+
+    // LiveData integration
+    implementation("cafe.adriel.voyager:voyager-livedata:$voyagerVersion")
+
+    def work_version = "2.8.1"
+    def nav_version = "2.5.1"
+
+    // Kotlin + coroutines
+    implementation("androidx.work:work-runtime-ktx:$work_version")
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //livedata
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$nav_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$nav_version"
+
+    //navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation"androidx.navigation:navigation-common:2.5.1"
+
+    //coroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4"
+
+    //fragment ktx
+    implementation 'androidx.fragment:fragment-ktx:1.6.0'
+
+    // hilt
+    implementation "com.google.dagger:hilt-android:2.44.2"
+    kapt "com.google.dagger:hilt-compiler:2.44.2"
+    implementation "androidx.hilt:hilt-navigation-fragment:1.0.0"
+
+    // GLIDE - Image Loader
+    implementation "com.github.bumptech.glide:glide:4.13.2"
+
+
+}

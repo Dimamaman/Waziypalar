@@ -1,0 +1,262 @@
+package uz.gita.dima.waziypalar.presenter.adapter
+
+import android.annotation.SuppressLint
+import android.os.Build
+import android.text.TextWatcher
+import android.view.View
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.annotation.RequiresApi
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatCheckBox
+import androidx.core.content.ContextCompat
+import androidx.databinding.BindingAdapter
+import uz.gita.dima.waziypalar.R
+import uz.gita.dima.waziypalar.util.*
+import uz.gita.dima.waziypalar.util.Constants.IS_AFTER
+import uz.gita.dima.waziypalar.util.Constants.IS_BEFORE
+import uz.gita.dima.waziypalar.util.Constants.LOW_PRIORITY
+import uz.gita.dima.waziypalar.util.Constants.MEDIUM_PRIORITY
+import uz.gita.dima.waziypalar.util.Constants.TOP_PRIORITY
+import uz.gita.dima.waziypalar.util.UIHelper.loadImage
+import uz.gita.dima.waziypalar.util.UIHelper.removeStrikeThroughText
+import uz.gita.dima.waziypalar.util.UIHelper.setTint
+import uz.gita.dima.waziypalar.util.UIHelper.showSnack
+import uz.gita.dima.waziypalar.util.UIHelper.showToast
+import uz.gita.dima.waziypalar.util.UIHelper.strikeThroughText
+
+
+/**
+ * Created by Androidplay
+ * Author: Ankush
+ * On: 04/Dec/2020
+ * Email: ankush@androidplay.in
+ */
+
+// Task Fragment
+
+@BindingAdapter("strike_text")
+fun TextView.strikeText(status: Boolean) {
+    if (status) this.strikeThroughText()
+    else this.removeStrikeThroughText()
+}
+
+
+@BindingAdapter("show")
+fun View.visibility(status: Boolean) {
+    if (status) this.visibility = View.VISIBLE else this.visibility = View.GONE
+}
+
+
+@RequiresApi(Build.VERSION_CODES.O)
+@BindingAdapter("day_name")
+fun TextView.showDayName(date: String?) {
+    this.text = if (date.isNullOrEmpty()) "" else date.toLong().convertFromEpochTime()
+}
+
+
+@BindingAdapter("priority_text")
+fun TextView.setPriorityText(priority: Int) {
+    this.text = when (priority) {
+        LOW_PRIORITY -> "Low Priority"
+        MEDIUM_PRIORITY -> "Medium Priority"
+        TOP_PRIORITY -> "Top priority"
+        else -> "Add Priority"
+    }
+}
+
+
+@BindingAdapter("background_color")
+fun View.backgroundColor(priority: Int) {
+    this.background = when (priority) {
+        LOW_PRIORITY -> ContextCompat.getDrawable(this.context, R.drawable.bg_card_grad_low)
+        MEDIUM_PRIORITY -> ContextCompat.getDrawable(this.context, R.drawable.bg_card_grad_medium)
+        TOP_PRIORITY -> ContextCompat.getDrawable(this.context, R.drawable.bg_card_grad_high)
+        else -> ContextCompat.getDrawable(this.context, R.drawable.bg_card_grad_low)
+    }
+}
+
+
+// Task Edit Fragment
+
+@BindingAdapter("isProgressVisible")
+fun View.isProgressVisible(responseState: ResultData<*>) {
+    visibility = if (responseState is ResultData.Loading) View.VISIBLE
+    else View.GONE
+}
+
+
+@BindingAdapter("isErrorVisible")
+fun View.isErrorVisible(responseState: ResultData<*>) {
+    visibility = if (responseState is ResultData.Failed) View.VISIBLE
+    else View.GONE
+}
+
+
+@BindingAdapter("isResponseReceived")
+fun View.isResponseReceived(responseState: ResultData<*>) {
+    visibility = if (responseState is ResultData.Success<*>) View.VISIBLE
+    else View.GONE
+}
+
+
+@RequiresApi(Build.VERSION_CODES.O)
+@BindingAdapter("setNotificationDateTime")
+fun TextView.setNotificationDateTime(data: String?) {
+    data?.let {
+        val dataToDateTimeFormat = it.toLocalDateTime()?.beautifyDateTime()
+        text = when {
+            it.compareWithToday() == IS_BEFORE -> resources.getString(
+                R.string.prompt_past_notification,
+                dataToDateTimeFormat ?: "Unknown Error"
+            )
+            it.compareWithToday() == IS_AFTER -> resources.getString(
+                R.string.prompt_future_notification,
+                dataToDateTimeFormat ?: "Unknown Error"
+            )
+            else -> resources.getString(
+                R.string.prompt_past_no_notification,
+                dataToDateTimeFormat ?: "Unknown Error"
+            )
+        }
+    }
+}
+
+
+@BindingAdapter("isNoImageTextVisible")
+fun TextView.isNoImageTextVisible(url: String?) {
+    visibility = if (url?.isNotEmpty() == true) View.GONE else View.VISIBLE
+}
+
+
+@BindingAdapter("showImage")
+fun ImageView.showImage(url: String?) {
+    if (url?.isNotEmpty() == true) {
+        this.apply {
+            loadImage(url)
+            visibility = View.VISIBLE
+        }
+    } else this.visibility = View.GONE
+}
+
+
+@BindingAdapter("makeTint")
+fun ImageView.makeTint(url: String?) {
+    if (url?.isNotEmpty() == true) this.setTint(R.color.white)
+    else this.setTint(R.color.dribblePink)
+}
+
+
+@SuppressLint("SetTextI18n")
+@BindingAdapter("isImageUploading")
+fun View.isImageUploading(responseState: ResultData<*>) {
+    when (responseState) {
+        is ResultData.Loading -> showSnack(this, "Uploading...")
+        is ResultData.Success -> showSnack(this, "Great! It's done.")
+        is ResultData.Failed -> showSnack(this, "Check your connection")
+        is ResultData.DoNothing -> {
+        }
+    }
+}
+
+
+@SuppressLint("SetTextI18n")
+@BindingAdapter("isDeleting")
+fun TextView.isDeleting(responseState: ResultData<*>) {
+    if (responseState is ResultData.Loading)
+        text = "Deleting task..."
+    else if (responseState is ResultData.Failed)
+        showSnack(this.rootView, "Deleted")
+}
+
+
+@BindingAdapter("isUpdating")
+fun TextView.isUpdating(responseState: ResultData<*>) {
+    text = when (responseState) {
+        is ResultData.DoNothing -> "Save"
+        is ResultData.Loading -> "Saving..."
+        is ResultData.Failed -> "Try again!"
+        is ResultData.Success -> {
+            showSnack(this.rootView, "Task updated")
+            "Save"
+        }
+    }
+}
+
+
+@SuppressLint("SetTextI18n")
+@BindingAdapter("checkBoxText")
+fun AppCompatCheckBox.checkBoxText(status: Boolean) {
+    text = if (status) "Marked as completed"
+    else "Mark as complete"
+}
+
+
+// Create Task Fragment
+
+@BindingAdapter("textChangedListener")
+fun EditText.bindTextWatcher(textWatcher: TextWatcher) {
+    this.addTextChangedListener(textWatcher)
+}
+
+
+@BindingAdapter("emailAvailabilityStatus", "currentUserEmail", "emailUnderCheck")
+fun TextView.showAvailability(
+    responseState: ResultData<*>,
+    currentUserEmail: String,
+    emailUnderCheck: String?
+) {
+    text = if (!emailUnderCheck.isNullOrEmpty() && currentUserEmail.isNotEmpty()) {
+        when (responseState) {
+            is ResultData.Loading -> context.resources.getString(R.string.Checking)
+            is ResultData.Success -> {
+                if (currentUserEmail == emailUnderCheck)
+                    context.resources.getString(R.string.self_assign_error)
+                else context.resources.getString(R.string.assign_user_added)
+            }
+            else -> context.resources.getString(R.string.assign_no_user)
+        }
+    } else if (emailUnderCheck?.isEmpty() == true) "Assignee"
+    else "Assignee"
+}
+
+
+// View Task Fragment
+
+@RequiresApi(Build.VERSION_CODES.O)
+@BindingAdapter("showDayDateMonth")
+fun TextView.showDayDateMonth(epoch: String?) {
+    epoch?.let { text = it.toLocalDateTime()?.showDayDateAndMonth() }
+}
+
+
+@RequiresApi(Build.VERSION_CODES.O)
+@BindingAdapter("showTime")
+fun TextView.showTime(epoch: String?) {
+    epoch?.let { text = it.toLocalDateTime()?.showTime() }
+}
+
+
+// Feedback Fragment
+
+@BindingAdapter("isShowing")
+fun AppCompatButton.isShowing(responseState: ResultData<*>) {
+    visibility =
+        if (responseState is ResultData.Loading || responseState is ResultData.Success)
+            View.GONE
+        else View.VISIBLE
+}
+
+@BindingAdapter("showFeedbackUploadResponse")
+fun View.showFeedbackUploadResponse(responseState: ResultData<*>) {
+    if (responseState is ResultData.Failed) showToast(
+        this.context,
+        responseState.message.toString()
+    )
+    if (responseState is ResultData.Success) showToast(
+        this.context,
+        "Thanks for the feedback \uD83D\uDC4D"
+    )
+}
+

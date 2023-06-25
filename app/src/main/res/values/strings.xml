@@ -1,0 +1,97 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="signup_create_acc_txt">Create account for <font color="#E94D88"><b>thinking Ahead</b></font></string>
+    <string name="login_create_acc_txt">Have account? <font color="#E94D88"><b>Get in</b></font></string>
+    <string name="think">think.</string>
+    <string name="hint_date_txt">Select Date</string>
+    <string name="new_task">New task</string>
+    <string name="task">task</string>
+    <string name="task_description">Task Description</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="login">login</string>
+    <string name="today">Today</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="all_tasks_completed_add_more">Create new task</string>
+    <string name="add_task">Add Task</string>
+    <string name="edit">Edit</string>
+    <string name="attach_image">Attach Image</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="attach_file">Attach file</string>
+    <string name="category">Category</string>
+    <string name="add_alarm_time">Add alarm time</string>
+    <string name="logout">Logout</string>
+    <string name="share">Share</string>
+    <string name="feedback">Feedback</string>
+    <string name="topic_hint">What change you want to see?</string>
+    <string name="description_hint">Describe to make us understand</string>
+    <string name="feedback_story">We take feedback anonymously to measure liking statistics. Your feedback will help us to make your experience more better.</string>
+    <string name="suggest_the_developers">Suggest</string>
+    <string name="past">Overdue</string>
+    <string name="upload_img_txt">Upload your task image</string>
+    <string name="task_title">Task title:</string>
+    <string name="task_details">Task Details:</string>
+    <string name="get_started">Next</string>
+    <string name="details">Details</string>
+    <string name="assign_task">Assigned</string>
+    <string name="overdue">Overdue</string>
+
+    <!--Revised Strings-->
+    <string name="app_name">Waziypalar</string>
+    <string name="fragment_task_general_app_desc">Start managing your tasks</string>
+
+    <!--Authentication-->
+    <string name="login_header_txt"><font color="#444444">Welcome,</font><font color="#9E9E9E">\nSign in to get started</font></string>
+    <string name="sign_in">Sign In</string>
+    <string name="prompt_failed_to_login">Failed to login. Reason: %1$s</string>
+
+    <!--Main Task View-->
+    <string name="create_task">Create</string>
+    <string name="completed">Completed</string>
+
+    <!--Task Creation-->
+    <string name="set_alarm">Set Notification</string>
+    <string name="ring_alarm_for_this_task">Alarm will ring for the task</string>
+    <string name="task_progress_uploading">Uploading Image…</string>
+    <string name="task_added_failure">Failed to add task</string>
+    <string name="task_added_success">Task added success successfully👍</string>
+    <string name="task_image_upload_failed">Image uploading failed. Please retry adding the task.</string>
+    <string name="create_task_title_hint">Task Title</string>
+    <string name="create_task_details_hint">Add task details</string>
+    <string name="self_assign_error">"Self assign not possible!"</string>
+    <string name="assign_user_added">"User added✔"</string>
+    <string name="assign_no_user">"No user found"</string>
+    <string name="options">More options</string>
+    <string name="username">Email Id</string>
+    <string name="add_assignee_email">Add email</string>
+    <string name="assignee">Assignee</string>
+    <string name="add_image">Add Image</string>
+    <string name="add_alarm">Add alarm</string>
+    <string name="add_priority">Add Priority</string>
+    <string name="remove">Remove</string>
+    <string name="Checking">Checking…</string>
+
+    <!--Task Editing-->
+    <string name="edit_task">Task Details</string>
+    <string name="no_task_id">No such Task found, or task is deleted.</string>
+    <string name="save_task">Save</string>
+    <string name="delete_task">Delete Task</string>
+    <string name="show_comments">Show comments</string>
+    <string name="prompt_past_no_notification">Alarm won\'t ring for time which has passed %1$s</string>
+    <string name="prompt_past_notification">You were notified on %1$s. Tap here to change.</string>
+    <string name="prompt_future_notification">You will be notified on %1$s. Tap here to change.</string>
+    <string name="mark_as_completed">Mark as completed</string>
+
+    <!--Priority selection dialog-->
+    <string name="top_priority">Top Priority</string>
+    <string name="medium_priority">Medium Priority</string>
+    <string name="low_priority">Low Priority</string>
+    <string name="select_task_priority">Select Task Priority</string>
+
+    <!--Task View-->
+    <string name="priority_header">Priority</string>
+    <string name="attachment">Attachment</string>
+    <string name="title_activity_feedback">FeedbackActivity</string>
+    <string name="client_id">AIzaSyClZBEmmPTbz0l4CHRq09sorg2g1j9mJg0</string>
+</resources>

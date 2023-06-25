@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/addEditTodo">
+
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="uz.gita.dima.waziypalar.presenter.screens.splash.SplashScreen"
+        android:label="SplashScreen"
+        tools:layout="@layout/screen_splash">
+        <action
+            android:id="@+id/action_splashScreen_to_mainScreen3"
+            app:destination="@id/mainScreen"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/splashScreen"
+            app:popUpToInclusive="true"
+            />
+        <action
+            android:id="@+id/action_splashScreen_to_addEditTodo"
+            app:destination="@id/addEditTodo" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainScreen"
+        android:name="uz.gita.dima.waziypalar.presenter.screens.main.MainScreen"
+        android:label="MainScreen"
+        tools:layout="@layout/screen_main"/>
+    <fragment
+        android:id="@+id/addEditTodo"
+        android:name="uz.gita.dima.waziypalar.presenter.screens.addedit.AddEditTodo"
+        tools:layout="@layout/screen_add_edit"
+        android:label="AddEditTodo" >
+        <action
+            android:id="@+id/action_addEditTodo_to_prioritySelectionDialog"
+            app:destination="@id/prioritySelectionDialog" />
+    </fragment>
+
+
+    <dialog
+        android:id="@+id/prioritySelectionDialog"
+        android:name="uz.gita.dima.waziypalar.presenter.dialog.PrioritySelectionDialog"
+        android:label="PrioritySelectionDialog"
+        tools:layout="@layout/layout_priority"/>
+
+</navigation>
