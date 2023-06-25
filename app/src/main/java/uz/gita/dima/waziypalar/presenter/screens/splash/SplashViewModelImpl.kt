@@ -26,4 +26,5 @@ class SplashViewModelImpl @Inject constructor(
             internetConnection.value = false
         }
     }
+
 }
