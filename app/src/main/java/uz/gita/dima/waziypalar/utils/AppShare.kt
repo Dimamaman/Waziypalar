@@ -1,6 +1,7 @@
 package uz.gita.dima.waziypalar.utils
 
 import android.content.Intent
+import android.net.Uri
 import androidx.fragment.app.Fragment
 import uz.gita.dima.waziypalar.utils.Constants.PLAY_STORE_LINK
 
@@ -11,12 +12,16 @@ import uz.gita.dima.waziypalar.utils.Constants.PLAY_STORE_LINK
 fun Fragment.shareApp() {
     val sharingIntent = Intent(Intent.ACTION_SEND)
     val shareText =
-        "Manage projects and personal tasks on the go collaboratively. Get it now $PLAY_STORE_LINK"
-    val shareSubText = "Ahead - choose cleaner way"
+        "Live Now.\n\nBetter to live with my program \n\n $\"link: https://play.google.com/store/apps/details?id=uz.gita.dima.waziypalar\""
     sharingIntent.apply {
         type = "text/plain"
-        putExtra(Intent.EXTRA_SUBJECT, shareSubText)
         putExtra(Intent.EXTRA_TEXT, shareText)
-        startActivity(Intent.createChooser(this, "Spread via"))
+        startActivity(Intent.createChooser(this, "Todo"))
     }
+}
+
+fun Fragment.feedBack() {
+    val emailIntent =
+        Intent(Intent.ACTION_VIEW, Uri.parse("mailto:" + "dimamamanov37@gmail.com"))
+    startActivity(emailIntent)
 }

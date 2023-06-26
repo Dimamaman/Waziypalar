@@ -46,7 +46,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     }
 
     private fun goToTaskFragment() {
-        findNavController().navigate(R.id.action_splashFragment_to_taskFragment)
+        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToTaskFragment())
     }
 
     private fun goToAuthFragment() {

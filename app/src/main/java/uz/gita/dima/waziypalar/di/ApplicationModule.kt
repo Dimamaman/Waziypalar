@@ -107,7 +107,7 @@ class ApplicationModule {
         pendingIntent: PendingIntent
     ): NotificationCompat.Builder = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
         .setAutoCancel(true)
-        .setSmallIcon(R.drawable.ic_notification)
+        .setSmallIcon(R.drawable.rocket_2)
         .setContentIntent(pendingIntent)
 
     @Provides

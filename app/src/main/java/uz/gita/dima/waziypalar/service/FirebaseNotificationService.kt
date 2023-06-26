@@ -1,6 +1,8 @@
 package uz.gita.dima.waziypalar.service
 
 import android.annotation.SuppressLint
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,6 +23,7 @@ class FirebaseNotificationService : FirebaseMessagingService() {
     @Inject
     lateinit var notify: Notify
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
 

@@ -168,7 +168,7 @@ class TaskCreateFragment : Fragment(R.layout.fragment_task_create) {
         if (requestCode == 1000 && resultCode == Activity.RESULT_OK && data != null) {
             viewModel.todo.taskImage = data.dataString
             binding?.apply {
-                layoutTaskImage.clImagePlaceHolder.visibility = View.VISIBLE
+//                layoutTaskImage.clImagePlaceHolder.visibility = View.VISIBLE
             }
         }
     }

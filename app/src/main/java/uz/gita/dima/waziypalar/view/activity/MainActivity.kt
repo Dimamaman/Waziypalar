@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         intent?.let {
-            navigateToGlobalFragment(it)
+
         }
     }
 
@@ -88,6 +89,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    @SuppressLint("SuspiciousIndentation")
     private fun navigateToGlobalFragment(intent: Intent) {
         if (intent.action == ACTION_SHOW_TASK_FRAGMENT)
             findNavController(R.id.navHostFragment).navigate(R.id.action_global_taskFragment)

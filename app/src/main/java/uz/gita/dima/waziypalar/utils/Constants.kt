@@ -16,8 +16,8 @@ object Constants {
     const val QUOTE_WORKER_ID = 1001
     const val QUOTE_API = "https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/"
 
-    const val PLAY_STORE_LINK = "https://app.androidplay.in/ahead/android"
-    const val GLOBAL_TAG = "Dima"
+    const val PLAY_STORE_LINK = "link: https://play.google.com/store/apps/details?id=uz.gita.dima.waziypalar"
+    const val GLOBAL_TAG = "FFF"
 
     // For firestore collection - Production
     const val TASK_COLLECTION = "Tasks"
@@ -52,7 +52,7 @@ object Constants {
     // For notification channel
     const val NOTIFICATION_CHANNEL_ID = "think_channel"
     const val NOTIFICATION_CHANNEL_NAME = "think"
-    const val NOTIFICATION_ID = "AHEAD"
+    const val NOTIFICATION_ID = "Dima"
 
     // For Android version check
     val DEVICE_ANDROID_VERSION = Build.VERSION.SDK_INT

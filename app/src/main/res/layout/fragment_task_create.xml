@@ -74,17 +74,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/layoutTaskInput" />
 
-                <include
-                    android:id="@+id/layoutAssigneeUser"
-                    layout="@layout/layout_assign_user"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/padding_16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layoutSetAlarm"
-                    app:viewmodel="@{viewmodel}" />
-
                 <TextView
                     android:id="@+id/tvAttachmentHeader"
                     android:layout_width="wrap_content"
@@ -97,7 +86,7 @@
                     android:textColor="@color/grey3"
                     android:textSize="@dimen/text_18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layoutAssigneeUser" />
+                    app:layout_constraintTop_toBottomOf="@+id/layoutSetAlarm" />
 
                 <include
                     android:id="@+id/layoutCreateTaskFeatures"
@@ -112,14 +101,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvAttachmentHeader" />
 
-                <include
-                    android:id="@+id/layoutTaskImage"
-                    layout="@layout/layout_image_holder"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/padding_16dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layoutCreateTaskFeatures" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

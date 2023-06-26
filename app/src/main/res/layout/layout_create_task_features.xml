@@ -25,7 +25,7 @@
             app:layout_constraintTop_toBottomOf="@+id/layoutSetAlarm"
             tools:ignore="UseCompatTextViewDrawableXml" />-->
 
-        <TextView
+        <!--<TextView
             android:id="@+id/addImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,13 +40,12 @@
             android:textSize="@dimen/text_16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layoutSetAlarm"
-            tools:ignore="UseCompatTextViewDrawableXml" />
+            tools:ignore="UseCompatTextViewDrawableXml" />-->
 
         <TextView
             android:id="@+id/addPriority"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/padding_26dp"
             android:background="@drawable/bg_icon_ripple"
             android:drawableTop="@drawable/ic_flag"
             android:drawablePadding="@dimen/padding_8dp"

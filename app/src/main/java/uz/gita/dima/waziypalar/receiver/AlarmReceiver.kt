@@ -97,7 +97,7 @@ class AlarmReceiver : HiltBroadcastReceiver() {
             setContentText(alarmDescription)
             setContentIntent(contentIntent)
             setStyle(NotificationCompat.BigTextStyle().bigText(alarmDescription))
-            addAction(R.drawable.ic_notification, "Mark Complete", actionIntent)
+//            addAction(R.drawable.ic_notification, "Mark Complete", actionIntent)
         }
 
         notificationManager.notify(uniqueNotificationId, baseNotificationBuilder.build())

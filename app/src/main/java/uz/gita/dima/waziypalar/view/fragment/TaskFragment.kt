@@ -135,9 +135,7 @@ class TaskFragment : Fragment(R.layout.fragment_task) {
             when (it.itemId) {
                 R.id.menu_logout -> logOutUser()
                 R.id.menu_share_app -> shareApp()
-                R.id.menu_feedback -> {
-
-                }
+                R.id.menu_feedback -> feedBack()
             }
             true
         }
