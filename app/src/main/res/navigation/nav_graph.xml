@@ -17,16 +17,9 @@
 
     <fragment
         android:id="@+id/taskFragment"
-        android:name="tech.androidplay.sonali.todo.view.fragment.TaskFragment"
+        android:name="uz.gita.dima.waziypalar.presenter.fragment.TaskFragment"
         android:label="TaskFragment"
         tools:layout="@layout/fragment_task">
-        <action
-            android:id="@+id/action_taskFragment_to_taskEditFragment"
-            app:destination="@id/taskEditFragment"
-            app:enterAnim="@anim/fade_out_animation"
-            app:exitAnim="@anim/fade_in_animation"
-            app:popEnterAnim="@anim/fade_out_animation"
-            app:popExitAnim="@anim/fade_in_animation" />
         <action
             android:id="@+id/action_taskFragment_to_taskCreateFragment"
             app:destination="@id/taskCreateFragment"
@@ -42,6 +35,9 @@
             app:exitAnim="@anim/fade_in_animation"
             app:popEnterAnim="@anim/fade_out_animation"
             app:popExitAnim="@anim/fade_in_animation"/>
+        <action
+            android:id="@+id/action_taskFragment_to_taskEditFragment"
+            app:destination="@id/taskEditFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -51,6 +47,9 @@
         <action
             android:id="@+id/action_splashFragment_to_taskFragment"
             app:destination="@id/taskFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_taskCreateFragment"
+            app:destination="@id/taskCreateFragment" />
     </fragment>
     <fragment
         android:id="@+id/taskEditFragment"
@@ -58,21 +57,17 @@
         android:label="TaskEditFragment"
         tools:layout="@layout/fragment_task_edit">
         <action
-            android:id="@+id/action_taskEditFragment_to_taskFragment"
-            app:destination="@id/taskFragment"
-            app:enterAnim="@anim/fade_out_animation"
-            app:exitAnim="@anim/fade_in_animation"
-            app:popEnterAnim="@anim/fade_out_animation"
-            app:popExitAnim="@anim/fade_in_animation"
-            app:popUpTo="@id/taskFragment"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_taskEditFragment_to_prioritySelectionDialog"
+            app:destination="@id/prioritySelectionDialog" />
         <argument
             android:name="taskId"
             app:argType="string"
             app:nullable="true" />
         <action
-            android:id="@+id/action_taskEditFragment_to_prioritySelectionDialog"
-            app:destination="@id/prioritySelectionDialog" />
+            android:id="@+id/action_taskEditFragment_to_taskFragment"
+            app:destination="@id/taskFragment"
+            app:popUpTo="@id/taskFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/taskCreateFragment"

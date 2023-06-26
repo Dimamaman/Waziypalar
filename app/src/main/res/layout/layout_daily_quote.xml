@@ -36,7 +36,7 @@
             app:drawableEndCompat="@drawable/ic_quote"
             app:drawableStartCompat="@drawable/ic_quote"
             app:drawableTint="@color/grey2"
-            app:show="@{(quote != null)? true: false}" />
+            app:show="@{(quote != null)? false: false}" />
 
         <TextView
             android:id="@+id/tvAppBarAuthor"
@@ -50,7 +50,7 @@
             android:textAlignment="center"
             android:textColor="@color/grey2"
             android:textSize="@dimen/text_16sp"
-            app:show="@{(author != null) ? true : false}" />
+            app:show="@{(author != null) ? false : false}" />
 
     </LinearLayout>
 

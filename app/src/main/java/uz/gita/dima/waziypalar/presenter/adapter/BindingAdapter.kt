@@ -3,6 +3,7 @@ package uz.gita.dima.waziypalar.presenter.adapter
 import android.annotation.SuppressLint
 import android.os.Build
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
@@ -24,12 +25,6 @@ import uz.gita.dima.waziypalar.utils.UIHelper.strikeThroughText
 import uz.gita.dima.waziypalar.utils.*
 
 
-/**
- * Created by Androidplay
- * Author: Ankush
- * On: 04/Dec/2020
- * Email: ankush@androidplay.in
- */
 
 // Task Fragment
 
@@ -184,8 +179,14 @@ fun TextView.isUpdating(responseState: ResultData<*>) {
 @SuppressLint("SetTextI18n")
 @BindingAdapter("checkBoxText")
 fun AppCompatCheckBox.checkBoxText(status: Boolean) {
-    text = if (status) "Marked as completed"
-    else "Mark as complete"
+    text = if (status) {
+        Log.d("DDD","CheckBoxText -> $status")
+        "Marked as completed"
+    }
+    else {
+        Log.d("DDD","CheckBoxText -> ELSE de......")
+        "Mark as complete"
+    }
 }
 
 

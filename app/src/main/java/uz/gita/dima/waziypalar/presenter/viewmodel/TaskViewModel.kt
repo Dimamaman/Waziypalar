@@ -50,9 +50,6 @@ class TaskViewModel @Inject constructor(
     private var _quoteText = MutableLiveData<String?>()
     val quote get() = _quoteText
 
-    private var _quoteAuthor = MutableLiveData<String?>()
-    val author get() = _quoteAuthor
-
     init {
         setLoadingState(true)
         getAllUnassignedTask()
@@ -95,7 +92,7 @@ class TaskViewModel @Inject constructor(
                         getAssignedTaskList(assignedTask)
                         setLoadingState(false)
                     } else {
-
+                        setLoadingState(false)
                     }
                 }
             } catch (e: Exception) {

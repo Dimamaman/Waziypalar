@@ -1,5 +1,6 @@
 package uz.gita.dima.waziypalar.presenter.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -29,9 +30,14 @@ class ViewTaskViewModel @Inject constructor(private val taskSource: TodoReposito
 
     fun getTaskByTaskId(taskId: String?) {
         viewModelScope.launch {
-            val response: Todo? = taskId?.let { taskSource.fetchTaskByTaskId(it) }
+            val response: Todo? = taskId?.let {
+                taskSource.fetchTaskByTaskId(it)
+            }
+            Log.d("UUU","Response -> $response")
             response?.let {
                 _taskDetails.postValue(it)
+//                _creatorDetails.postValue("Created By Dima")
+                _viewState.postValue(ResultData.Success(response))
             } ?: _viewState.postValue(ResultData.Failed("Check your network!"))
         }
     }

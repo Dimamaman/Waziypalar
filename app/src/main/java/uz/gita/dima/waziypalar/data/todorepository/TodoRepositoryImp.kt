@@ -1,5 +1,6 @@
 package uz.gita.dima.waziypalar.data.todorepository
 
+import android.util.Log
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -33,8 +34,6 @@ class TodoRepositoryImp @Inject constructor(): TodoRepository {
 
     // reference to fireStore tables
     private val taskListRef = db.collection(TASK_COLLECTION)
-    private val userListRef = db.collection(USER_COLLECTION)
-    private val feedbackListRef = db.collection(FEEDBACK_COLLECTION)
 
     // query to task table
     private val query: Query = taskListRef
@@ -79,8 +78,13 @@ class TodoRepositoryImp @Inject constructor(): TodoRepository {
 
     override suspend fun fetchTaskByTaskId(taskId: String): Todo? = try {
         val docSnapshot: DocumentSnapshot = taskListRef.document(taskId).get().await()
-        if (docSnapshot.exists()) docSnapshot.toObject(Todo::class.java)
-        else null
+        if (docSnapshot.exists()) {
+            Log.d("UUU","Exists......")
+            docSnapshot.toObject(Todo::class.java)
+        }
+        else {
+            null
+        }
     } catch (e: Exception) {
         null
     }
@@ -95,11 +99,12 @@ class TodoRepositoryImp @Inject constructor(): TodoRepository {
         }
 
 
-    override suspend fun deleteTask(docId: String, taskImageLink: String?): ResultData<Boolean> =
+    override suspend fun deleteTask(docId: String): ResultData<Boolean> =
         try {
+            Log.d("TTT","DocId -> $docId")
+
             taskListRef.document(docId).delete().await()
-            if (!taskImageLink.isNullOrEmpty()) storage.storage.getReferenceFromUrl(taskImageLink)
-                .delete().await()
+            Log.d("TTT","TaskListRef -> $taskListRef")
             ResultData.Success(true)
         } catch (e: Exception) {
             ResultData.Failed(e.message)

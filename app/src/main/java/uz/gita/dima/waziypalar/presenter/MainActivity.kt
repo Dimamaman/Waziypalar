@@ -14,6 +14,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import uz.gita.dima.waziypalar.R
 import uz.gita.dima.waziypalar.databinding.ActivityMainBinding
 import uz.gita.dima.waziypalar.receiver.AlarmReceiver
+import uz.gita.dima.waziypalar.utils.CacheManager
 import uz.gita.dima.waziypalar.utils.Constants.ACTION_SHOW_TASK_FRAGMENT
 import uz.gita.dima.waziypalar.utils.Constants.ANDROID_OREO
 import uz.gita.dima.waziypalar.utils.Constants.DEVICE_ANDROID_VERSION
@@ -25,6 +26,9 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var appsFlyerLib: AppsFlyerLib
     private lateinit var binding: ActivityMainBinding
+
+    @Inject
+    lateinit var cache: CacheManager
 
     @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,6 +73,11 @@ class MainActivity : AppCompatActivity() {
             PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
             PackageManager.DONT_KILL_APP
         )
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cache.clearCache(this)
     }
 
 

@@ -1,6 +1,7 @@
 package uz.gita.dima.waziypalar.presenter.viewmodel
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
@@ -85,23 +86,26 @@ class EditTaskViewModel @Inject constructor(
 
     fun changeTaskStatus() = viewModelScope.launch {
         val map =
-            if (todo.isCompleted) mapOf("isCompleted" to false)
-            else mapOf("isCompleted" to true)
-        todo.docId.let { taskSource.markTaskComplete(map, it) }
+            if (todo.isCompleted) {
+                Log.d("TTTT","Completed -> ${todo.isCompleted}")
+                mapOf("isCompleted" to true)
+            }
+            else {
+                Log.d("TTTT","Completed -> ElSE de......")
+                mapOf("isCompleted" to false)
+            }
+        todo.docId.let {
+            Log.d("TTT","DOCid -> $it")
+            taskSource.markTaskComplete(map, it)
+        }
     }
-
-
-    /*fun uploadImage(uri: Uri?, taskId: String) = viewModelScope.launch {
-        _imageUploadState.postValue(ResultData.Loading)
-        val response = uri?.let { taskSource.uploadImage(it, taskId, null) }
-        response?.let { _imageUploadState.postValue(ResultData.Success(it)) }
-            ?: run { _imageUploadState.postValue(ResultData.Failed()) }
-    }*/
 
 
     fun deleteTask() = viewModelScope.launch {
         _deleteTaskState.postValue(ResultData.Loading)
-        val response = todo.docId.let { taskSource.deleteTask(it, todo.taskImage) }
+        val response = todo.docId.let {
+            taskSource.deleteTask(it)
+        }
         if (response is ResultData.Success && response.data == true)
             _deleteTaskState.postValue(ResultData.Success(true))
         else _deleteTaskState.postValue(ResultData.Failed("Unable to delete. Please retry."))

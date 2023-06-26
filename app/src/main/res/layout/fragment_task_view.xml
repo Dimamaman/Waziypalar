@@ -176,20 +176,6 @@
                 app:priority_text="@{viewmodel.taskDetails.priority}"
                 tools:ignore="RelativeOverlap" />
 
-            <TextView
-                android:id="@+id/fragment_task_view_attachment_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/padding_16dp"
-                android:layout_marginTop="@dimen/padding_35dp"
-                android:fontFamily="@font/calibre_light"
-                android:text="@string/attachment"
-                android:textColor="@color/grey2"
-                android:textSize="@dimen/text_18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_task_view_img_priority"
-                app:show="@{(viewmodel.taskDetails.taskImage.isEmpty()) ? false : true}"
-                tools:ignore="RelativeOverlap" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

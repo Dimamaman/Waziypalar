@@ -15,6 +15,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.navigation.fragment.findNavController
+import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -27,6 +28,8 @@ import uz.gita.dima.waziypalar.R
 import uz.gita.dima.waziypalar.data.model.Todo
 import uz.gita.dima.waziypalar.databinding.FragmentTaskCreateBinding
 import uz.gita.dima.waziypalar.utils.*
+import uz.gita.dima.waziypalar.utils.UIHelper.showSnack
+import uz.gita.dima.waziypalar.workmanager.TaskCreationWorker.Companion.TASK_CREATION_WORKER_TAG
 import javax.inject.Inject
 
 /**
@@ -100,8 +103,6 @@ class TaskCreateFragment : Fragment(R.layout.fragment_task_create) {
         binding?.apply {
             imgBack.setOnClickListener { findNavController().navigateUp() }
 
-//            layoutCreateTaskFeatures.addImage.setOnClickListener { selectImage() }
-
             layoutSetAlarm.tvSelectDate.setOnClickListener {
                 dateTimePicker.openDateTimePicker(requireContext())
             }
@@ -109,12 +110,6 @@ class TaskCreateFragment : Fragment(R.layout.fragment_task_create) {
             layoutCreateTaskFeatures.addPriority.setOnClickListener {
                 findNavController()
                     .navigate(R.id.action_taskCreateFragment_to_prioritySelectionDialog)
-            }
-
-            layoutTaskImage.btnImgPhotoRemove.setOnClickListener {
-                layoutTaskImage.imgPhoto.setImageDrawable(null)
-                layoutTaskImage.clImagePlaceHolder.visibility = View.GONE
-//                viewModel.todo.taskImage = null
             }
         }
     }
@@ -143,21 +138,7 @@ class TaskCreateFragment : Fragment(R.layout.fragment_task_create) {
             }
         }
 
-        /*workManager.getWorkInfosByTagLiveData(IMAGE_UPLOAD_WORKER_TAG).observe(
-            viewLifecycleOwner
-        ) { workInfoList ->
-            if (workInfoList.size != 0 && workInfoList != null) {
-                val workInfo = workInfoList[0]
-                when (workInfo.state) {
-                    WorkInfo.State.SUCCEEDED -> showSnack(requireView(), "Image Uploaded")
-                    WorkInfo.State.FAILED -> showSnack(requireView(), "Upload failed!")
-                    else -> {
-                    }
-                }
-            }
-        }*/
-
-        /*workManager.getWorkInfosByTagLiveData(TASK_CREATION_WORKER_TAG).observe(
+        workManager.getWorkInfosByTagLiveData(TASK_CREATION_WORKER_TAG).observe(
             viewLifecycleOwner
         ) { workInfoList ->
             if (workInfoList.size != 0 && workInfoList != null) {
@@ -173,7 +154,7 @@ class TaskCreateFragment : Fragment(R.layout.fragment_task_create) {
                     }
                 }
             }
-        }*/
+        }
     }
 
 

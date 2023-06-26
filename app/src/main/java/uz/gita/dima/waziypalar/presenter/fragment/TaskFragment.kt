@@ -7,6 +7,7 @@ import android.os.*
 import android.view.*
 import android.widget.*
 import androidx.activity.*
+import androidx.annotation.RequiresApi
 import androidx.databinding.*
 import androidx.fragment.app.*
 import androidx.fragment.app.Fragment
@@ -21,6 +22,7 @@ import uz.gita.dima.waziypalar.presenter.adapter.viewpager_adapter.ViewPagerAdap
 import uz.gita.dima.waziypalar.presenter.viewmodel.TaskViewModel
 import uz.gita.dima.waziypalar.utils.SliderTransformer
 import uz.gita.dima.waziypalar.utils.UIHelper.showSnack
+import uz.gita.dima.waziypalar.utils.feedBack
 import uz.gita.dima.waziypalar.utils.isNetworkAvailable
 import uz.gita.dima.waziypalar.utils.shareApp
 import javax.inject.*
@@ -67,6 +69,7 @@ class TaskFragment : Fragment(R.layout.fragment_task) {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -87,8 +90,8 @@ class TaskFragment : Fragment(R.layout.fragment_task) {
 
             layoutTaskHolder.layoutAssignedTask.vpAssignedTaskList.apply {
                 adapter = assignedTaskAdapter
-                offscreenPageLimit = 3
-                setPageTransformer(SliderTransformer(3))
+                offscreenPageLimit = 5
+                setPageTransformer(SliderTransformer(5))
             }
         }
     }
@@ -101,6 +104,7 @@ class TaskFragment : Fragment(R.layout.fragment_task) {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun setObservers() {
         viewModel.assignedTaskList.observe(viewLifecycleOwner) { list ->
             list?.let { assignedTaskAdapter.submitList(it) }
@@ -126,12 +130,8 @@ class TaskFragment : Fragment(R.layout.fragment_task) {
 
         popupMenu.setOnMenuItemClickListener {
             when (it.itemId) {
-                R.id.menu_logout -> {
-
-                }
                 R.id.menu_share_app -> shareApp()
-                R.id.menu_feedback -> { }
-
+                R.id.menu_feedback -> feedBack()
             }
             true
         }

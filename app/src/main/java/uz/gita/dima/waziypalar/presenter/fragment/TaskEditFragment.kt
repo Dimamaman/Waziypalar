@@ -38,9 +38,7 @@ class TaskEditFragment : Fragment(R.layout.fragment_task_edit) {
 
     private val viewModel: EditTaskViewModel by viewModels()
 
-    private val taskIdFromArgs by lazy {
-        TaskEditFragmentArgs.fromBundle(requireArguments()).taskId
-    }
+    private val taskIdFromArgs by lazy { TaskEditFragmentArgs.fromBundle(requireArguments()).taskId }
 
     @Inject
     lateinit var dialog: AlertDialog.Builder
@@ -53,9 +51,6 @@ class TaskEditFragment : Fragment(R.layout.fragment_task_edit) {
 
     @Inject
     lateinit var dateTimePicker: DateTimePicker
-
-    private var pickedImage: Uri? = null
-
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -92,23 +87,23 @@ class TaskEditFragment : Fragment(R.layout.fragment_task_edit) {
             lifecycleOwner = viewLifecycleOwner
             viewmodel = viewModel
         }
-        taskIdFromArgs?.let { fetchTask(it) } ?: showSnack(requireView(), "Can't find task Id")
+        taskIdFromArgs?.let {
+            fetchTask(it)
+        } ?: showSnack(requireView(), "Can't find task Id")
     }
 
 
     private fun setListener() {
         binding.apply {
-//            imgUploadTaskImg.setOnClickListener {
-//                if (isNetworkAvailable()) {
-////                    selectImage()
-//                }
-//                else showSnack(requireView(), "Check Internet!")
-//            }
             tvTaskPriority.setOnClickListener {
                 findNavController().navigate(R.id.action_taskEditFragment_to_prioritySelectionDialog)
             }
-            tvDeleteTask.setOnClickListener { deleteTask(taskIdFromArgs) }
-            tvSelectDate.setOnClickListener { dateTimePicker.openDateTimePicker(requireContext()) }
+            tvDeleteTask.setOnClickListener {
+                deleteTask(taskIdFromArgs)
+            }
+            tvSelectDate.setOnClickListener {
+                dateTimePicker.openDateTimePicker(requireContext())
+            }
         }
     }
 
@@ -122,10 +117,14 @@ class TaskEditFragment : Fragment(R.layout.fragment_task_edit) {
             }
         }
         viewModel.updateTaskState.observe(viewLifecycleOwner) { state ->
-            state?.let { if (it is ResultData.Loading) hideKeyboard() }
+            state?.let {
+                if (it is ResultData.Loading) hideKeyboard()
+            }
         }
         viewModel.viewState.observe(viewLifecycleOwner) { state ->
-            state?.let { if (it is ResultData.Success) binding.task = it.data as Todo }
+            state?.let {
+                if (it is ResultData.Success) binding.task = it.data as Todo
+            }
         }
     }
 
@@ -136,23 +135,6 @@ class TaskEditFragment : Fragment(R.layout.fragment_task_edit) {
     }
 
 
-    /*private fun changeImage(pickedImage: Uri?) {
-        if (isNetworkAvailable()) {
-            lifecycleScope.launch {
-                viewModel.uploadImage(pickedImage, taskIdFromArgs!!)
-                viewModel.imageUploadState.observe(viewLifecycleOwner) { response ->
-                    response?.let {
-                        if (it is ResultData.Success) {
-                            logMessage("${it.data}")
-                            viewModel.todo.taskImage = "${it.data}"
-                        }
-                    }
-                }
-            }
-        } else showSnack(requireView(), "Check internet connection.")
-    }*/
-
-
     private fun deleteTask(docId: String?) {
         if (isNetworkAvailable()) {
             dialog.setPositiveButton("Yes") { dialogInterface, _ ->
@@ -160,6 +142,7 @@ class TaskEditFragment : Fragment(R.layout.fragment_task_edit) {
                 viewModel.deleteTaskState.observe(viewLifecycleOwner) { response ->
                     if (response is ResultData.Success<*>) {
                         requireContext().cancelAlarmedNotification(docId!!)
+//                        findNavController().navigateUp()
                         findNavController().navigate(R.id.action_taskEditFragment_to_taskFragment)
                         dialogInterface.dismiss()
                         showSnack(requireView(), "Task deleted")

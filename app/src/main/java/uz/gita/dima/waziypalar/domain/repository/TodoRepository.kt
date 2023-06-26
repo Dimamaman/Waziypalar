@@ -13,6 +13,6 @@ interface TodoRepository {
     suspend fun fetchOnlyAssignedTask(): Flow<MutableList<Todo>>
     suspend fun fetchTaskByTaskId(taskId: String): Todo?
     suspend fun updateTask(taskId: String, map: Map<String, Any?>): ResultData<Boolean>
-    suspend fun deleteTask(docId: String, taskImageLink: String?): ResultData<Boolean>
+    suspend fun deleteTask(docId: String): ResultData<Boolean>
     suspend fun markTaskComplete(map: Map<String, Any?>, docId: String): Boolean
 }

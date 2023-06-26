@@ -5,11 +5,9 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
-import uz.gita.dima.waziypalar.utils.Constants.IS_FIRST_TIME
 import uz.gita.dima.waziypalar.R
 import javax.inject.Inject
 
@@ -38,6 +36,6 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     }
 
     private fun goToTaskFragment() {
-        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToTaskFragment())
+        findNavController().navigate(R.id.action_splashFragment_to_taskFragment)
     }
 }
