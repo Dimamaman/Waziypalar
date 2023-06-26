@@ -13,9 +13,9 @@ import dagger.hilt.android.qualifiers.ActivityContext
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.InternalCoroutinesApi
 import uz.gita.dima.waziypalar.utils.AppEventTracking
-import uz.gita.dima.waziypalar.presenter.adapter.main_adapter.TodoAdapter
-import uz.gita.dima.waziypalar.presenter.adapter.viewpager_adapter.ViewPagerAdapter
 import uz.gita.dima.waziypalar.utils.DateTimePicker
+import uz.gita.dima.waziypalar.view.adapter.main_adapter.TodoAdapter
+import uz.gita.dima.waziypalar.view.adapter.viewpager_adapter.ViewPagerAdapter
 import java.util.*
 
 /** [ActivityModule] provides dependencies through activity level injections*/

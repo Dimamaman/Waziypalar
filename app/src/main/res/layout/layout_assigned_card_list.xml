@@ -6,11 +6,11 @@
 
         <variable
             name="viewModel"
-            type="uz.gita.dima.waziypalar.presenter.viewmodel.TaskViewModel" />
+            type="uz.gita.dima.waziypalar.viewmodel.TaskViewModel" />
 
         <variable
             name="todo"
-            type="uz.gita.dima.waziypalar.data.model.Todo" />
+            type="uz.gita.dima.waziypalar.model.Todo" />
     </data>
 
     <LinearLayout

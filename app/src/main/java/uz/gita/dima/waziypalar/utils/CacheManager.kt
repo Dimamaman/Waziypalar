@@ -3,7 +3,6 @@ package uz.gita.dima.waziypalar.utils
 import android.content.Context
 import java.io.File
 
-
 /** Removes the unwanted caches during app close */
 
 class CacheManager {

@@ -7,7 +7,7 @@
 
         <variable
             name="viewmodel"
-            type="uz.gita.dima.waziypalar.presenter.viewmodel.TaskViewModel" />
+            type="uz.gita.dima.waziypalar.viewmodel.TaskViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

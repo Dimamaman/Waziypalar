@@ -10,10 +10,12 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import uz.gita.dima.waziypalar.data.todorepository.TodoRepositoryImp
+import uz.gita.dima.waziypalar.data.network.ApiService
+import uz.gita.dima.waziypalar.data.repository.QuoteRepository
+import uz.gita.dima.waziypalar.data.repository.TodoRepository
 import uz.gita.dima.waziypalar.utils.Constants.QUOTE_API
 import java.util.concurrent.TimeUnit
-
+import javax.inject.Singleton
 
 /** [NetworkModule] provides dependecies through application level injections, specifically for
  * network calls
@@ -22,6 +24,7 @@ import java.util.concurrent.TimeUnit
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+
 
     @Provides
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
@@ -55,8 +58,16 @@ object NetworkModule {
             .build()
     }
 
+    @Provides
+    fun provideApiService(retrofit: Retrofit): ApiService {
+        return retrofit.create(ApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideQuoteRepository(apiService: ApiService) = QuoteRepository(apiService)
 
     @ExperimentalCoroutinesApi
     @Provides
-    fun provideTodoRepository() = TodoRepositoryImp()
+    fun provideTodoRepository() = TodoRepository()
 }

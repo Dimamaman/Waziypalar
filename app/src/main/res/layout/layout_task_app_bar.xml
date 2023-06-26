@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="uz.gita.dima.waziypalar.presenter.viewmodel.TaskViewModel" />
+            type="uz.gita.dima.waziypalar.viewmodel.TaskViewModel" />
     </data>
 
     <RelativeLayout
@@ -24,7 +24,7 @@
             android:alpha="0.8"
             android:fontFamily="@font/calibre_semi"
             android:maxLines="1"
-            android:text="Hi, Good Day..."
+            android:text="@{data.firstName}"
             android:textColor="@color/grey3"
             android:textSize="@dimen/text_26sp"
             tools:ignore="RelativeOverlap" />
@@ -44,14 +44,14 @@
 
         <ImageView
             android:id="@+id/imgMenu"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="@dimen/padding_18dp"
             android:layout_marginEnd="@dimen/padding_22dp"
             android:background="@drawable/bg_icon_ripple"
             android:padding="@dimen/padding_3dp"
-            android:src="@drawable/setting"
+            android:src="@drawable/ic_avatar"
             app:tint="@color/dribblePink"
             tools:ignore="ContentDescription" />
 

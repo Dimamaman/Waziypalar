@@ -34,7 +34,7 @@
         <item name="android:scrollbarDefaultDelayBeforeFade">1000</item>
     </style>
 
-    <!--<style name="AuthStyle" parent="FirebaseUI">
+    <style name="AuthStyle" parent="FirebaseUI">
         <item name="colorPrimary">@color/dribblePink</item>
         <item name="colorPrimaryDark">@color/dribblePink</item>
         <item name="colorAccent">@color/dribblePink</item>
@@ -51,7 +51,7 @@
         <item name="fontFamily">@font/calibre_semi</item>
         <item name="android:textSize">@dimen/text_16sp</item>
         <item name="android:textColorHint">@color/grey2</item>
-    </style>-->
+    </style>
 
     <style name="ButtonStyle" parent="android:style/Widget.Button">
         <item name="android:elevation">@dimen/padding_5dp</item>

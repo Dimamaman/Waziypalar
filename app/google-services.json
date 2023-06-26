@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "564266375495",
-    "project_id": "waziypalar-cbe78",
-    "storage_bucket": "waziypalar-cbe78.appspot.com"
+    "project_number": "882510237530",
+    "project_id": "live-now-cf01c",
+    "storage_bucket": "live-now-cf01c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:564266375495:android:201b17c11eb38498dbd462",
+        "mobilesdk_app_id": "1:882510237530:android:2fa3ee6c2bffe45d252d63",
         "android_client_info": {
           "package_name": "uz.gita.dima.waziypalar"
         }
       },
       "oauth_client": [
         {
-          "client_id": "564266375495-3si6gb8abrn5r2s985ut5619hh91jne1.apps.googleusercontent.com",
+          "client_id": "882510237530-q3valsuqdbrl448v1o9dj621237ohatl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyClZBEmmPTbz0l4CHRq09sorg2g1j9mJg0"
+          "current_key": "AIzaSyDk-JVCl-0WTysCc4vlpiAWyr5JoBND0Eg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "564266375495-3si6gb8abrn5r2s985ut5619hh91jne1.apps.googleusercontent.com",
+              "client_id": "882510237530-q3valsuqdbrl448v1o9dj621237ohatl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

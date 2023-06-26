@@ -7,7 +7,7 @@
 
         <variable
             name="viewmodel"
-            type="uz.gita.dima.waziypalar.presenter.viewmodel.TaskCreateViewModel" />
+            type="uz.gita.dima.waziypalar.viewmodel.TaskCreateViewModel" />
     </data>
 
     <ScrollView
@@ -74,6 +74,16 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/layoutTaskInput" />
 
+                <include
+                    android:id="@+id/layoutAssigneeUser"
+                    layout="@layout/layout_assign_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/padding_16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutSetAlarm"
+                    app:viewmodel="@{viewmodel}" />
 
                 <TextView
                     android:id="@+id/tvAttachmentHeader"
@@ -87,7 +97,7 @@
                     android:textColor="@color/grey3"
                     android:textSize="@dimen/text_18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layoutSetAlarm" />
+                    app:layout_constraintTop_toBottomOf="@+id/layoutAssigneeUser" />
 
                 <include
                     android:id="@+id/layoutCreateTaskFeatures"

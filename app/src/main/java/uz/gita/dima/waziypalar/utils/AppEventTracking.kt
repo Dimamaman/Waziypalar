@@ -4,11 +4,6 @@ import android.content.Context
 import com.appsflyer.AppsFlyerLib
 import javax.inject.Inject
 
-/**Created by
-Author: Ankush Bose
-Date: 13,June,2021
- **/
-
 enum class TrackingEvents {
     FIRST_VISIT,
     FIRST_LOGIN,

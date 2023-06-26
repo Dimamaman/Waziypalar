@@ -6,7 +6,7 @@
 
         <variable
             name="data"
-            type="uz.gita.dima.waziypalar.presenter.viewmodel.TaskViewModel" />
+            type="uz.gita.dima.waziypalar.viewmodel.TaskViewModel" />
     </data>
 
 
@@ -74,7 +74,7 @@
                 app:completedListSize="@{data.completedTaskList.size()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:quote="@{data.quote}" />
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="uz.gita.dima.waziypalar.viewmodel.TaskCreateViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/clAssignUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_rounded_10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvAssigneeHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_16dp"
+            android:layout_marginTop="@dimen/padding_16dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/calibre_semi"
+            android:text="@string/assignee"
+            android:textColor="@color/grey3"
+            android:textSize="@dimen/text_18sp"
+            app:currentUserEmail="@{viewmodel.currentUser.email}"
+            app:emailAvailabilityStatus="@{viewmodel.emailAvailabilityStatus}"
+            app:emailUnderCheck="@{viewmodel.emailUnderCheckForAvailability}" />
+
+        <EditText
+            android:id="@+id/etAssigneeUsername"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/calibre_semi"
+            android:hint="@string/add_assignee_email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:paddingStart="@dimen/padding_16dp"
+            android:paddingTop="@dimen/padding_8dp"
+            android:paddingEnd="@dimen/padding_16dp"
+            android:paddingBottom="@dimen/padding_8dp"
+            android:textColor="@color/grey3"
+            android:textSize="@dimen/text_18sp"
+            app:textChangedListener="@{viewmodel.todoAssigneeEmailWatcher}"
+            tools:ignore="Autofill" />
+
+    </LinearLayout>
+</layout>

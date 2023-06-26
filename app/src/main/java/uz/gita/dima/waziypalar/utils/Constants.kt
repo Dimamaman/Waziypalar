@@ -9,17 +9,15 @@ object Constants {
     // In-App Update
     const val APP_UPDATE_REQ_CODE = 111
 
-    // For default log tag
-    const val QUOTE_API = "https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/"
-
     // For work QuoteFetchWorker.kt
     const val QUOTE_AUTHOR = "author"
     const val QUOTE = "quote"
     const val QUOTE_WORKER_TAG = "quote_worker"
     const val QUOTE_WORKER_ID = 1001
+    const val QUOTE_API = "https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/"
 
     const val PLAY_STORE_LINK = "https://app.androidplay.in/ahead/android"
-    const val GLOBAL_TAG = "Androidplay"
+    const val GLOBAL_TAG = "Dima"
 
     // For firestore collection - Production
     const val TASK_COLLECTION = "Tasks"

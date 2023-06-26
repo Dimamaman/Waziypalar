@@ -16,14 +16,6 @@
         <variable
             name="completedListSize"
             type="int" />
-
-        <variable
-            name="quote"
-            type="String" />
-
-        <variable
-            name="author"
-            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,17 +37,6 @@
             app:layout_constraintVertical_bias="0.351"
             tools:ignore="ContentDescription" />
 
-        <include
-            android:id="@+id/layoutDailyQuote"
-            layout="@layout/layout_daily_quote"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_18dp"
-            app:author="@{author}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgEmptyTask"
-            app:quote="@{quote}" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAddTask"
@@ -63,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:layout_marginTop="@dimen/padding_16dp"
+            android:layout_marginTop="@dimen/padding_100dp"
             android:background="@drawable/bg_rounded_10dp"
             android:backgroundTint="@color/dribblePink"
             android:fontFamily="@font/jost"
@@ -75,7 +56,7 @@
             android:textSize="@dimen/text_16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutDailyQuote" />
+            app:layout_constraintTop_toBottomOf="@+id/imgEmptyTask" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

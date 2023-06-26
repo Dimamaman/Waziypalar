@@ -15,25 +15,23 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import uz.gita.dima.waziypalar.R
-import uz.gita.dima.waziypalar.app.App
-import uz.gita.dima.waziypalar.data.todorepository.TodoRepositoryImp
-import uz.gita.dima.waziypalar.domain.repository.TodoRepository
-import uz.gita.dima.waziypalar.presenter.MainActivity
 import uz.gita.dima.waziypalar.utils.CacheManager
 import uz.gita.dima.waziypalar.utils.Constants.ACTION_SHOW_TASK_FRAGMENT
 import uz.gita.dima.waziypalar.utils.Constants.NOTIFICATION_CHANNEL_ID
 import uz.gita.dima.waziypalar.utils.Constants.SHARED_PREFERENCE_NAME
 import uz.gita.dima.waziypalar.utils.Notify
+import uz.gita.dima.waziypalar.view.activity.MainActivity
+import uz.gita.dima.waziypalar.R
+import uz.gita.dima.waziypalar.TodoApplication
 import java.util.*
 import javax.inject.Singleton
+
 
 /** [ApplicationContext] provides dependencies through application level injections */
 
@@ -46,7 +44,7 @@ class ApplicationModule {
     fun provideAppsFlyerLib(): AppsFlyerLib = AppsFlyerLib.getInstance()
 
     @Provides
-    fun providesApplication(): App = App()
+    fun providesApplication(): TodoApplication = TodoApplication()
 
     @Singleton
     @Provides
@@ -126,5 +124,4 @@ class ApplicationModule {
     @Provides
     fun providesWorkManager(@ApplicationContext context: Context) =
         WorkManager.getInstance(context)
-
 }

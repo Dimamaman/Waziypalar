@@ -14,7 +14,7 @@
 
 
     <application
-        android:name=".app.App"
+        android:name=".TodoApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:icon="@mipmap/ic_launcher"
@@ -25,7 +25,7 @@
         android:windowSoftInputMode="adjustPan|stateHidden"
         tools:ignore="AllowBackup,UnusedAttribute">
         <activity
-            android:name=".presenter.MainActivity"
+            android:name=".view.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

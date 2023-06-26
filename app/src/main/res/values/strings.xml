@@ -38,7 +38,7 @@
     <string name="overdue">Overdue</string>
 
     <!--Revised Strings-->
-    <string name="app_name">Ahead</string>
+    <string name="app_name">Waziypalar</string>
     <string name="fragment_task_general_app_desc">Start managing your tasks</string>
 
     <!--Authentication-->
@@ -55,7 +55,7 @@
     <string name="ring_alarm_for_this_task">Alarm will ring for the task</string>
     <string name="task_progress_uploading">Uploading Image…</string>
     <string name="task_added_failure">Failed to add task</string>
-    <string name="task_added_success">Task added success successfully👍</string>
+    <string name="task_added_success">Task added successfully👍</string>
     <string name="task_image_upload_failed">Image uploading failed. Please retry adding the task.</string>
     <string name="create_task_title_hint">Task Title</string>
     <string name="create_task_details_hint">Add task details</string>

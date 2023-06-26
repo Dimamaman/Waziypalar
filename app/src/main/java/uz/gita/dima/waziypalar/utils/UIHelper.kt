@@ -17,12 +17,6 @@ import uz.gita.dima.waziypalar.utils.Constants.GLOBAL_TAG
 import java.time.Instant
 import java.util.*
 
-/**
- * Created by Androidplay
- * Author: Ankush
- * On: 4/26/2020, 10:51 AM
- */
-
 /** General ui related extension functions */
 
 object UIHelper {

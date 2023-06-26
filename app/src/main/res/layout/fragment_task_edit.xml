@@ -7,11 +7,11 @@
 
         <variable
             name="viewmodel"
-            type="uz.gita.dima.waziypalar.presenter.viewmodel.EditTaskViewModel" />
+            type="uz.gita.dima.waziypalar.viewmodel.EditTaskViewModel" />
 
         <variable
             name="task"
-            type="uz.gita.dima.waziypalar.data.model.Todo" />
+            type="uz.gita.dima.waziypalar.model.Todo" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -69,17 +69,6 @@
             app:layout_constraintTop_toBottomOf="@id/layoutTaskBar"
             app:priority_text="@{viewmodel.todo.priority}" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clTaskImg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_16dp"
-            android:background="@drawable/bg_rounded_10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTaskPriority">
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvSelectDate"
@@ -96,7 +85,7 @@
             app:drawableTint="@color/dribblePink"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/clTaskImg"
+            app:layout_constraintTop_toBottomOf="@+id/tvTaskPriority"
             app:setNotificationDateTime="@{viewmodel.todo.todoDate}" />
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -15,8 +15,6 @@ import androidx.core.app.NotificationCompat
 import androidx.navigation.NavDeepLinkBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import uz.gita.dima.waziypalar.R
-import uz.gita.dima.waziypalar.presenter.fragment.TaskEditFragmentArgs
 import uz.gita.dima.waziypalar.service.TaskStatusUpdateService
 import uz.gita.dima.waziypalar.utils.Constants
 import uz.gita.dima.waziypalar.utils.Constants.ALARM_DESCRIPTION
@@ -25,7 +23,10 @@ import uz.gita.dima.waziypalar.utils.Constants.ALARM_TEXT
 import uz.gita.dima.waziypalar.utils.Constants.NOTIFICATION_CHANNEL_ID
 import uz.gita.dima.waziypalar.utils.Constants.NOTIFICATION_CHANNEL_NAME
 import uz.gita.dima.waziypalar.utils.Constants.NOTIFICATION_ID
+import uz.gita.dima.waziypalar.R
+import uz.gita.dima.waziypalar.view.fragment.TaskEditFragmentArgs
 import javax.inject.Inject
+
 
 /** A [HiltBroadcastReceiver] receiver to send notification of task triggered by AlarmManager */
 
@@ -42,19 +43,6 @@ class AlarmReceiver : HiltBroadcastReceiver() {
     private var alarmText = ""
     private var alarmDescription = ""
     private var taskId = ""
-
-    /**
-     * if device reboots then the intent extras will be null at that time, so we cant
-     * start alarm with null values. In that case we need to fetch the data from a permanent source,
-     * i.e SQL DB that means Room DB.
-     * Execution: Start an alarm > save the alarm details in Room DB > when device reboots, again
-     * set the alarm with the details from DB > may be we can use a work manager for that when
-     * device reboots./ or a foreground service.
-     * while setting the alarm always check if the alarm time is ahead of current time.
-     *
-     * As per SOLID - Create a dedicated class for setting alarm/ cancelling alarm
-     */
-
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onReceive(context: Context?, intent: Intent?) {

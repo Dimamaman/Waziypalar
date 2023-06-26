@@ -6,11 +6,10 @@ import android.content.Intent
 import android.os.IBinder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
-import uz.gita.dima.waziypalar.domain.repository.TodoRepository
+import uz.gita.dima.waziypalar.data.repository.TodoRepository
 import uz.gita.dima.waziypalar.utils.Constants.ALARM_ID
 import uz.gita.dima.waziypalar.utils.Constants.NOTIFICATION_ID
 import javax.inject.Inject
-
 
 /** This service class serves the purpose of notification action button click listener to mark
  *  task as completed. Calls the 'updateTask' method from [TodoRepository]

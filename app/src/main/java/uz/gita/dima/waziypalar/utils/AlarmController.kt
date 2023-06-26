@@ -6,12 +6,11 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import uz.gita.dima.waziypalar.receiver.AlarmReceiver
+import uz.gita.dima.waziypalar.receiver.AlarmReceiver.Companion.ALARM_INTENT_ACTION
 import uz.gita.dima.waziypalar.utils.Constants.ALARM_DESCRIPTION
 import uz.gita.dima.waziypalar.utils.Constants.ALARM_ID
 import uz.gita.dima.waziypalar.utils.Constants.ALARM_TEXT
-import uz.gita.dima.waziypalar.receiver.AlarmReceiver
-import uz.gita.dima.waziypalar.receiver.AlarmReceiver.Companion.ALARM_INTENT_ACTION
-
 
 /** Holds the extension methods for starting & cancelling alarm from Activity/Fragment  */
 

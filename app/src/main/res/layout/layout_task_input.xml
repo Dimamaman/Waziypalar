@@ -7,7 +7,7 @@
 
         <variable
             name="task"
-            type="uz.gita.dima.waziypalar.data.model.Todo" />
+            type="uz.gita.dima.waziypalar.model.Todo" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
